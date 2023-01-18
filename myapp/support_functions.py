@@ -1,3 +1,5 @@
+from myapp.models import *
+
 def get_currency_list():
     currency_list = list()
     import requests
@@ -6,7 +8,7 @@ def get_currency_list():
     response = requests.get(url)
     if not response.status_code == 200:
         return currency_list
-    soup = BeautifulSoup(response.content)
+    soup = BeautifulSoup(response.content, features="html.parser")
     data_lines = soup.find_all('tr')
     for line in data_lines:
         try:
@@ -19,3 +21,14 @@ def get_currency_list():
         except:
             continue
     return currency_list
+
+def add_currencies(currency_list):
+    for currency in currency_list:
+        currency_name = currency[0]
+        currency_symbol = currency[1]
+        try:
+            c= Currency.objects.get(iso=currency_symbol)
+        except:
+            c = Currency(long_name=currency_name, iso=currency_symbol)
+            #c.name = currency_name
+            c.save()  #To test out the code, replace this by print(c)
