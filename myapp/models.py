@@ -27,3 +27,16 @@ class Rates(models.Model):
         return self.currency.iso + " " + self.x_currency + " " + str(self.rate)
     def __str__(self):
         return self.currency.iso + " " + self.x_currency + " " + str(self.rate)
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=30)
+    nationality = models.CharField(max_length=30)
+    date_of_birth = models.DateField()
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=50)
+    author = models.ForeignKey(Author,on_delete=models.CASCADE)
+    publisher = models.CharField(max_length=30)
+    date = models.DateField()
