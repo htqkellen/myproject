@@ -26,6 +26,8 @@ def add_currencies(currency_list):
     for currency in currency_list:
         currency_name = currency[0]
         currency_symbol = currency[1]
+        if len(currency_symbol) > 3:
+            continue
         try:
             c= Currency.objects.get(iso=currency_symbol)
         except:
