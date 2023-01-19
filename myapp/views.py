@@ -48,6 +48,7 @@ def exch_rate(request):
         currency2 = request.GET['currency_to']
         c1 = Currency.objects.get(iso=currency1)
         c2 = Currency.objects.get(iso=currency2)
+        support_functions.update_xrates(c1)
         data['currency1'] = c1
         data['currency2'] = c2
         try:
