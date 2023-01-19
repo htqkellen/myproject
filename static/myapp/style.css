@@ -15,3 +15,9 @@ font-size: xx-small;
 font-size: large;
 color: blue;
 }
+
+.lobster {
+color: coral;
+font-family: 'lobster';
+font-size: 36px;
+}
