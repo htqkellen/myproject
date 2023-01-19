@@ -17,14 +17,18 @@ from django.contrib import admin
 from django.urls import path
 
 from myapp import views
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path("", views.home, name="home"),
+    path('home',views.home, name='home1'),
     path('maintenance',views.maintenance,name='maintenance'),
     path('currencies',views.view_currencies, name='currencies'),
     path('currency_selection',views.currency_selection,name="currency_selector"),
     path('exchange_rate_info',views.exch_rate,name="exchange_rate_info"),
     path('register',views.register_new_user,name="register_user"),
+
 
 ]
