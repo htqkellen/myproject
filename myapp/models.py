@@ -50,3 +50,14 @@ class Book(models.Model):
     author = models.ForeignKey(Author,on_delete=models.CASCADE)
     publisher = models.CharField(max_length=30)
     date = models.DateField()
+
+class City(models.Model):
+    title = models.CharField(max_length=50)
+    wiki_link=models.URLField()
+    latitude=models.FloatField(null=False)
+    longitude=models.FloatField(null=False)
+
+    def __str__(self):
+        return self.username
+    def __repr__(self):
+        return f'{self.name} {str(self.latitude)} {str(self.longitude)} {self.wiki_link}'

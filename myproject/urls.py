@@ -29,6 +29,6 @@ urlpatterns = [
     path('currency_selection',views.currency_selection,name="currency_selector"),
     path('exchange_rate_info',views.exch_rate,name="exchange_rate_info"),
     path('register',views.register_new_user,name="register_user"),
-
+    path('map',views.map,name="map"),
 
 ]
